@@ -1,0 +1,56 @@
+body {
+  background-color: lightblue;
+}
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: #409dbc;
+  color: rgb(0, 0, 0);
+}
+
+.header h1{
+  font-size: 48px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+.navbar {
+  display: flex;
+  background-color: #333;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 800px) {
+  .row, .navbar {  
+    flex-direction: column;
+  }
+}
