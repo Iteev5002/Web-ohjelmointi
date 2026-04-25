@@ -1,13 +1,10 @@
-<!--
-    Tehtävä 1.
--->
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-     <link rel="stylesheet" href="pages/tyyli/tyylit_t7.css">
+    <link rel="stylesheet" href="pages/tyyli/tyylit_t7.css">
 </head>
 
 <body>
@@ -17,23 +14,40 @@
   <p class="note">Etusivu jossa on kuvia ja linkkejä</p>
 </div>
 
-<!-- Navigaatiopalkki -->
 <div class="navbar">
-    <a href="index.html">
-      Portfolion etusivu</a>
-    <a href="pages/elementteja.html">
-        Elementtejä</a>
-    <a href="pages/tyylisivuista.html">
-        Tyylisivu</a>
+    <a href="index.html">Portfolion etusivu</a>
+    <a href="pages/elementteja.html">Elementtejä</a>
+    <a href="pages/tyylisivuista.html">Tyylisivu</a>
 </div>
 
-
-</div>
+<div class="content">
+    <h2 id="tervehdys" style="text-align:center; color:#3647b6; margin-top: 20px;"></h2>
+    
     <p>Tämä on Web-ohjelmoinnissa tehdyn Portfolion etusivu.</p>
-    <p></p>
+    
     <h2>Kuvia</h2>
-    <img src="pages/kuva.jpg" alt="maisema">
-    <img src="pages/t_kuva.jpg" alt="kuva">
-</body>
+    <img src="pages/kuva.jpg" alt="maisema" style="max-width: 100%; height: auto;">
+    <img src="pages/t_kuva.jpg" alt="kuva" style="max-width: 100%; height: auto;">
+</div>
 
+<script>
+    // Haetaan nykyinen kellonaika (tunnit 0-23)
+    const tunti = new Date().getHours();
+    let viesti;
+
+    // Päätetään viesti kellonajan mukaan
+    if (tunti < 10 && tunti > 5) {
+        viesti = "Hyvää huomenta!";
+    } else if (tunti < 18 && tunti >= 10) {
+        viesti = "Hyvää päivää!";
+    } else if (tunti < 23 && tunti >= 18) {
+        viesti = "Hyvää iltaa!";
+    } else {
+        viesti = "Hyvää yötä! (Oletpa myöhään liikkeellä)";
+    }
+
+    // Sijoitetaan valittu viesti HTML-elementtiin, jonka id on "tervehdys"
+    document.getElementById("tervehdys").innerText = viesti;
+</script>
+</body>
 </html>
