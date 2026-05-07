@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="pages/tyyli/tyylit_t7.css">
+    <link rel="stylesheet" href="pages/tyyli/tyylit_t8.css">
 </head>
 
 <body>
@@ -17,7 +17,8 @@
 <div class="navbar">
     <a href="index.html">Portfolion etusivu</a>
     <a href="pages/elementteja.html">Elementtejä</a>
-    <a href="pages/tyylisivuista.html">Tyylisivu</a>
+    <a href="pages/testi.html">Elokuvia ja pelejä</a>
+    <a href="pages/tyylisivuista.html">Tyylisivu (oppitunnilla tehty)</a>
 </div>
 
 <div class="content">
@@ -25,17 +26,26 @@
     
     <p>Tämä on Web-ohjelmoinnissa tehdyn Portfolion etusivu.</p>
     
-    <h2>Kuvia</h2>
-    <img src="pages/kuva.jpg" alt="maisema" style="max-width: 100%; height: auto;">
-    <img src="pages/t_kuva.jpg" alt="kuva" style="max-width: 100%; height: auto;">
+    <h2>Kuvagalleria</h2>
+    
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="pages/kuva.jpg" alt="maisema 1">
+        </div>
+        <div class="carousel-slide">
+            <img src="pages/t_kuva.jpg" alt="maisema 2">
+        </div>
+        <button id="prevBtn">&#10094;</button>
+        <button id="nextBtn">&#10095;</button>
+    </div>
 </div>
 
 <script>
-    // Haetaan nykyinen kellonaika (tunnit 0-23)
+    // Tarkistetaan nykyinen kellonaika (tunnit 0-23)
     const tunti = new Date().getHours();
     let viesti;
 
-    // Päätetään viesti kellonajan mukaan
+    // Valitaan oikea tervehdys kellon ajan mukaan:
     if (tunti < 10 && tunti > 5) {
         viesti = "Hyvää huomenta!";
     } else if (tunti < 18 && tunti >= 10) {
@@ -46,8 +56,48 @@
         viesti = "Hyvää yötä! (Oletpa myöhään liikkeellä)";
     }
 
-    // Sijoitetaan valittu viesti HTML-elementtiin, jonka id on "tervehdys"
+    // Annetaan käyttäjälle viesti:
     document.getElementById("tervehdys").innerText = viesti;
+</script>
+
+
+<script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("carousel-slide");
+
+    // Näytetään ensimmäinen kuva heti
+    showSlides(slideIndex);
+
+    // Painikkeiden toiminnot:
+    document.getElementById("nextBtn").addEventListener("click", () => {
+        changeSlide(1);
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+        changeSlide(-1);
+    });
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        // Jos mennään kuvien yli, palataan alkuun
+        if (n >= slides.length) { slideIndex = 0; }
+        // Jos mennään nollan alle, mennään viimeiseen kuvaan
+        if (n < 0) { slideIndex = slides.length - 1; }
+
+        // Piilotetaan kaikki kuvat
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        // Näytetään vain valittu kuva
+        slides[slideIndex].style.display = "block";
+    }
+    
+
 </script>
 </body>
 </html>
